@@ -1,0 +1,21 @@
+{
+    "name": "long-response-server",
+    "version": "1.0.0",
+    "description": "A simple Node.js server that responds after a 100-minute delay.",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "keywords": [
+      "nodejs",
+      "express",
+      "delay",
+      "long-response"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+      "express": "^4.18.4"
+    }
+  }
+  
