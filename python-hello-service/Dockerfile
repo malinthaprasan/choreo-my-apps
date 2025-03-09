@@ -1,7 +1,7 @@
 # ------------------------------
 # Stage 1: Build dependencies
 # ------------------------------
-FROM python:3.11-slim AS builder
+FROM python:alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -10,6 +10,10 @@ WORKDIR /app
 COPY requirements.txt .
 
 RUN python3 -m venv /app/venv
+
+# RUN --mount=type=cache,target=/root/.cache/pip . /app/venv/bin/activate && \
+#     python3 -m ensurepip --upgrade && \
+#     python3 -m pip install -r /app/requirements.txt
 
 RUN . /app/venv/bin/activate && \
     python3 -m ensurepip --upgrade && \
@@ -21,7 +25,7 @@ COPY . .
 # ------------------------------
 # Stage 2: Production image
 # ------------------------------
-FROM python:3.11-slim
+FROM python:alpine
 
 # Set working directory
 WORKDIR /app
