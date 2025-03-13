@@ -6,6 +6,20 @@ info:
 servers:
   - url: /company/hr
 paths:
+  /departments:
+    get:
+      summary: Get Departments
+      operationId: getDepartments
+      responses:
+        '200':
+          description: Successful response with department information
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '500':
+          description: Internal server error
   /department/{departmentId}:
     get:
       summary: Get Department by ID
