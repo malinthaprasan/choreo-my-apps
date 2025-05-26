@@ -1,3 +1,0 @@
-[submodule "kube-java-memory"]
-	path = kube-java-memory
-	url = git@github.com:malinthaprasan/kube-java-memory.git
