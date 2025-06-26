@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: Hello & Proxy API
+  version: 1.0.0
+  description: |
+    A simple API with two endpoints:
+    1. `/hello` returns a greeting.
+    2. `/proxy` forwards the request to an external service defined by `SERVICE_URL` environment variable and returns its response.
+servers:
+  - url: http://localhost:{port}
+    description: Local server
+    variables:
+      port:
+        default: "8080"
+paths:
+  /hello:
+    get:
+      summary: Returns a simple hello message
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: hello
+  /proxy:
+    get:
+      summary: Proxy to external service
+      description: |
+        Calls the external service specified by the `SERVICE_URL` environment variable and returns its full response (status, headers, and body).
+      responses:
+        "200":
+          description: Successful response from proxied service
+          content:
+            application/json:
+              schema:
+                type: object
+            text/plain:
+              schema:
+                type: string
+        "502":
+          description: Bad Gateway - failed to call external service
+components: {}
